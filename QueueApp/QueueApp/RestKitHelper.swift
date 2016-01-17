@@ -11,7 +11,7 @@ import RestKit
 import FXKeychain
 
 let baseURL = "http://base.url"
-let register = "api/authenticate"
+let registerURL = "api/authenticate"
 let loginURL = "api/enduser/Register"
 let userURL = "api/enduser"
 
@@ -21,7 +21,7 @@ class RestKitHelper: NSObject {
     lazy var managedObjectContext = RKManagedObjectStore.defaultStore().mainQueueManagedObjectContext
     
     override init() {
-        //        RKlcl_configure_by_name("RestKit/Network", RKlcl_vTrace.rawValue)
+//        RKlcl_configure_by_name("RestKit/Network", RKlcl_vTrace.rawValue)
         
         let pathToPersistentStore = "\(RKApplicationDataDirectory())/queue.sqlite"
         let managedObjectStore = RKManagedObjectStore(managedObjectModel: NSManagedObjectModel.mergedModelFromBundles(nil))
@@ -44,6 +44,10 @@ class RestKitHelper: NSObject {
         //Mapping for Login
         manager.addRequestDescriptor(RKRequestDescriptor(mapping: Login.inverseMapping, objectClass: Login.self, rootKeyPath: nil, method: .POST))
         manager.addResponseDescriptor(RKResponseDescriptor(mapping: Login.mapping, method: .POST, pathPattern: loginURL, keyPath: nil, statusCodes: RKStatusCodeIndexSetForClass(.Successful)))
+        
+        //Mapping for Login
+        manager.addRequestDescriptor(RKRequestDescriptor(mapping: Register.inverseMapping, objectClass: Register.self, rootKeyPath: nil, method: .POST))
+        manager.addResponseDescriptor(RKResponseDescriptor(mapping: Login.mapping, method: .POST, pathPattern: registerURL, keyPath: nil, statusCodes: RKStatusCodeIndexSetForClass(.Successful)))
         
         ////Mapping for User
         

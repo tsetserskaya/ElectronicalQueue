@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="9525" systemVersion="15C50" minimumToolsVersion="Xcode 7.0">
+    <entity name="City" representedClassName="City" syncable="YES">
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="country" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Country" inverseName="coutnries" inverseEntity="Country" syncable="YES"/>
+        <relationship name="organisations" optional="YES" toMany="YES" deletionRule="No Action" destinationEntity="Organisation" inverseName="city" inverseEntity="Organisation" syncable="YES"/>
+    </entity>
+    <entity name="Country" representedClassName="Country" syncable="YES">
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="coutnries" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="City" inverseName="country" inverseEntity="City" syncable="YES"/>
+    </entity>
+    <entity name="Interval" representedClassName="Interval" syncable="YES">
+        <attribute name="time" optional="YES" attributeType="Date" syncable="YES"/>
+        <relationship name="queue" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Queue" inverseName="intervals" inverseEntity="Queue" syncable="YES"/>
+        <relationship name="user" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="intervals" inverseEntity="User" syncable="YES"/>
+    </entity>
+    <entity name="Organisation" representedClassName="Organisation" syncable="YES">
+        <attribute name="attribute" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="doctor" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="city" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="City" inverseName="organisations" inverseEntity="City" syncable="YES"/>
+        <relationship name="resources" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Resource" inverseName="organisation" inverseEntity="Resource" syncable="YES"/>
+    </entity>
+    <entity name="Queue" representedClassName="Queue" syncable="YES">
+        <attribute name="date" optional="YES" attributeType="Date" syncable="YES"/>
+        <relationship name="intervals" optional="YES" toMany="YES" minCount="8" maxCount="8" deletionRule="Nullify" destinationEntity="Interval" inverseName="queue" inverseEntity="Interval" syncable="YES"/>
+        <relationship name="resource" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Resource" inverseName="queues" inverseEntity="Resource" syncable="YES"/>
+    </entity>
+    <entity name="Resource" representedClassName="Resource" syncable="YES">
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="organisation" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Organisation" inverseName="resources" inverseEntity="Organisation" syncable="YES"/>
+        <relationship name="queues" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Queue" inverseName="resource" inverseEntity="Queue" syncable="YES"/>
+    </entity>
+    <entity name="User" representedClassName="User" syncable="YES">
+        <attribute name="adress" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="age" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="city" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="country" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="lastName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="phone" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="intervals" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Interval" inverseName="user" inverseEntity="Interval" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="User" positionX="-63" positionY="-18" width="128" height="165"/>
+        <element name="Country" positionX="-54" positionY="45" width="128" height="75"/>
+        <element name="City" positionX="-36" positionY="54" width="128" height="90"/>
+        <element name="Organisation" positionX="-18" positionY="72" width="128" height="120"/>
+        <element name="Resource" positionX="0" positionY="90" width="128" height="90"/>
+        <element name="Queue" positionX="18" positionY="108" width="128" height="90"/>
+        <element name="Interval" positionX="36" positionY="126" width="128" height="90"/>
+    </elements>
+</model>

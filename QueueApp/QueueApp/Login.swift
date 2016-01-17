@@ -10,22 +10,22 @@ import UIKit
 import RestKit
 import FXKeychain
 
-let apiTokenKey = "com.queue.User-Token"
+let apiTokenKey = "com.queue.apiToken"
 
 class Login: NSObject {
 
-    var userIdentifier, password, userToken: String?
+    var login, password, apiToken: String?
     
-    init(userIdentifier: String, password: String?) {
+    init(login: String, password: String?) {
         super.init()
-        self.userIdentifier = userIdentifier
+        self.login = login
         self.password = password
     }
     
     static var inverseMapping: RKObjectMapping = {
         let mapping = RKObjectMapping(forClass: Login.self)
         mapping.addAttributeMappingsFromDictionary([
-            "B" : "userIdentifier",
+            "B" : "login",
             "A" : "password"
             ])
         
@@ -35,7 +35,7 @@ class Login: NSObject {
     static var mapping: RKObjectMapping = {
         let mapping = RKObjectMapping(forClass: Login.self)
         mapping.addAttributeMappingsFromDictionary([
-            "A" : "userToken"
+            "A" : "apiToken"
             ])
         
         return mapping
@@ -51,7 +51,7 @@ class Login: NSObject {
     }
     
     func saveApiToken() {
-        FXKeychain.defaultKeychain().setObject(userToken, forKey: apiTokenKey)
+        FXKeychain.defaultKeychain().setObject(apiToken, forKey: apiTokenKey)
     }
     
     class func deleteApiToken() {

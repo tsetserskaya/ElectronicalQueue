@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="00b-TN-zsN">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+    </dependencies>
+    <scenes>
+        <!--Side BarVC-->
+        <scene sceneID="kkG-vJ-ceq">
+            <objects>
+                <viewController id="00b-TN-zsN" customClass="SideBarVC" customModule="QueueApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="uLT-tm-7JU"/>
+                        <viewControllerLayoutGuide type="bottom" id="ozo-Lt-Mgr"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="1ED-Am-aSu">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Bwe-jX-zdC">
+                                <rect key="frame" x="0.0" y="0.0" width="260" height="480"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="home" translatesAutoresizingMaskIntoConstraints="NO" id="yFw-mh-HfG">
+                                        <rect key="frame" x="75" y="173" width="23" height="20"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                    </imageView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7Lf-IS-Gge">
+                                        <rect key="frame" x="75" y="173" width="110" height="19"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="110" id="RZE-jd-JOS"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
+                                        <inset key="contentEdgeInsets" minX="30" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                        <state key="normal" title="Home">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="homeButtonTouched:" destination="00b-TN-zsN" eventType="touchUpInside" id="5uR-Ad-5BP"/>
+                                        </connections>
+                                    </button>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="enuQ" translatesAutoresizingMaskIntoConstraints="NO" id="rob-er-c21">
+                                        <rect key="frame" x="75" y="226" width="22" height="22"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                    </imageView>
+                                    <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="szl-m9-D3H">
+                                        <rect key="frame" x="75" y="227" width="110" height="19"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
+                                        <inset key="contentEdgeInsets" minX="30" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                        <state key="normal" title="Queue Up">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="queueUpTouched:" destination="00b-TN-zsN" eventType="touchUpInside" id="tzK-qa-q2g"/>
+                                        </connections>
+                                    </button>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="history" translatesAutoresizingMaskIntoConstraints="NO" id="EkY-ZU-cul">
+                                        <rect key="frame" x="75" y="280" width="18" height="22"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                    </imageView>
+                                    <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2mv-Bi-faD">
+                                        <rect key="frame" x="75" y="281" width="110" height="19"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
+                                        <inset key="contentEdgeInsets" minX="30" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                        <state key="normal" title="History">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="historyTouched:" destination="00b-TN-zsN" eventType="touchUpInside" id="lTh-FM-bWc"/>
+                                        </connections>
+                                    </button>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logout" translatesAutoresizingMaskIntoConstraints="NO" id="SSi-GC-u7y">
+                                        <rect key="frame" x="75" y="391" width="19" height="20"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                    </imageView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8eT-qn-SXc">
+                                        <rect key="frame" x="75" y="392" width="110" height="19"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
+                                        <inset key="contentEdgeInsets" minX="30" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                        <state key="normal" title="Logout">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="logoutTouched:" destination="00b-TN-zsN" eventType="touchUpInside" id="dxz-sv-AqQ"/>
+                                        </connections>
+                                    </button>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="iconLogin" translatesAutoresizingMaskIntoConstraints="NO" id="F4c-eD-YqT">
+                                        <rect key="frame" x="75" y="336" width="20" height="21"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                    </imageView>
+                                    <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7pN-bx-90h">
+                                        <rect key="frame" x="75" y="337" width="110" height="19"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
+                                        <inset key="contentEdgeInsets" minX="30" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                        <state key="normal" title="Profile">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="profileTouched:" destination="00b-TN-zsN" eventType="touchUpInside" id="sFj-k2-xKu"/>
+                                        </connections>
+                                    </button>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="LogoL" translatesAutoresizingMaskIntoConstraints="NO" id="yXo-uG-RXW">
+                                        <rect key="frame" x="30" y="70" width="200" height="63"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="63" id="3Ks-nd-xqA"/>
+                                            <constraint firstAttribute="width" constant="200" id="MKK-Oa-DRZ"/>
+                                        </constraints>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" red="0.20392156862745098" green="0.62352941176470589" blue="0.82352941176470584" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstItem="7Lf-IS-Gge" firstAttribute="top" secondItem="yXo-uG-RXW" secondAttribute="bottom" constant="40" id="3mZ-ka-bpJ"/>
+                                    <constraint firstItem="rob-er-c21" firstAttribute="centerY" secondItem="szl-m9-D3H" secondAttribute="centerY" id="4kq-Il-uOQ"/>
+                                    <constraint firstItem="7pN-bx-90h" firstAttribute="top" secondItem="EkY-ZU-cul" secondAttribute="bottom" constant="35" id="ARu-bb-YdP"/>
+                                    <constraint firstItem="7pN-bx-90h" firstAttribute="leading" secondItem="F4c-eD-YqT" secondAttribute="leading" id="AaY-kw-9K8"/>
+                                    <constraint firstItem="szl-m9-D3H" firstAttribute="top" secondItem="7Lf-IS-Gge" secondAttribute="bottom" constant="35" id="B0J-Vl-XyY"/>
+                                    <constraint firstItem="2mv-Bi-faD" firstAttribute="leading" secondItem="szl-m9-D3H" secondAttribute="leading" id="IEY-n3-mA5"/>
+                                    <constraint firstItem="2mv-Bi-faD" firstAttribute="trailing" secondItem="szl-m9-D3H" secondAttribute="trailing" id="IPU-Uh-m7b"/>
+                                    <constraint firstItem="szl-m9-D3H" firstAttribute="leading" secondItem="7Lf-IS-Gge" secondAttribute="leading" id="Jla-1i-0su"/>
+                                    <constraint firstItem="szl-m9-D3H" firstAttribute="trailing" secondItem="7Lf-IS-Gge" secondAttribute="trailing" id="K1O-II-DVe"/>
+                                    <constraint firstItem="7Lf-IS-Gge" firstAttribute="centerX" secondItem="Bwe-jX-zdC" secondAttribute="centerX" id="Lo7-31-kq2"/>
+                                    <constraint firstItem="EkY-ZU-cul" firstAttribute="centerY" secondItem="2mv-Bi-faD" secondAttribute="centerY" id="Md2-3Q-y7X"/>
+                                    <constraint firstItem="2mv-Bi-faD" firstAttribute="top" secondItem="szl-m9-D3H" secondAttribute="bottom" constant="35" id="UEN-hN-XP7"/>
+                                    <constraint firstItem="yFw-mh-HfG" firstAttribute="centerY" secondItem="7Lf-IS-Gge" secondAttribute="centerY" id="XcE-FN-IXg"/>
+                                    <constraint firstItem="7Lf-IS-Gge" firstAttribute="leading" secondItem="yFw-mh-HfG" secondAttribute="leading" id="YGf-DU-PN6"/>
+                                    <constraint firstItem="yXo-uG-RXW" firstAttribute="top" secondItem="Bwe-jX-zdC" secondAttribute="top" constant="70" id="Yjw-Gu-e68"/>
+                                    <constraint firstItem="SSi-GC-u7y" firstAttribute="centerY" secondItem="8eT-qn-SXc" secondAttribute="centerY" id="cJf-j3-TGN"/>
+                                    <constraint firstItem="yXo-uG-RXW" firstAttribute="centerX" secondItem="Bwe-jX-zdC" secondAttribute="centerX" id="e4e-IL-Jq4"/>
+                                    <constraint firstItem="7pN-bx-90h" firstAttribute="leading" secondItem="2mv-Bi-faD" secondAttribute="leading" id="emh-kJ-Q8y"/>
+                                    <constraint firstItem="8eT-qn-SXc" firstAttribute="leading" secondItem="SSi-GC-u7y" secondAttribute="leading" id="lzZ-BE-DFI"/>
+                                    <constraint firstItem="rob-er-c21" firstAttribute="leading" secondItem="7Lf-IS-Gge" secondAttribute="leading" id="n0G-kF-sY7"/>
+                                    <constraint firstItem="2mv-Bi-faD" firstAttribute="leading" secondItem="EkY-ZU-cul" secondAttribute="leading" id="ogh-WJ-WOI"/>
+                                    <constraint firstItem="7pN-bx-90h" firstAttribute="trailing" secondItem="2mv-Bi-faD" secondAttribute="trailing" id="qta-2Z-fU0"/>
+                                    <constraint firstItem="8eT-qn-SXc" firstAttribute="leading" secondItem="2mv-Bi-faD" secondAttribute="leading" id="sg6-vY-1P5"/>
+                                    <constraint firstItem="8eT-qn-SXc" firstAttribute="top" secondItem="F4c-eD-YqT" secondAttribute="bottom" constant="35" id="w4W-6R-sOj"/>
+                                    <constraint firstItem="F4c-eD-YqT" firstAttribute="centerY" secondItem="7pN-bx-90h" secondAttribute="centerY" id="yij-d2-jU3"/>
+                                    <constraint firstItem="8eT-qn-SXc" firstAttribute="trailing" secondItem="2mv-Bi-faD" secondAttribute="trailing" id="zgl-ER-DdL"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" red="0.20392156859999999" green="0.62352941179999999" blue="0.82352941180000006" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="ozo-Lt-Mgr" firstAttribute="top" secondItem="Bwe-jX-zdC" secondAttribute="bottom" id="0Nz-Ur-6JY"/>
+                            <constraint firstItem="Bwe-jX-zdC" firstAttribute="leading" secondItem="1ED-Am-aSu" secondAttribute="leading" id="PDB-7L-dh8"/>
+                            <constraint firstItem="Bwe-jX-zdC" firstAttribute="top" secondItem="1ED-Am-aSu" secondAttribute="top" id="tad-3Q-T7e"/>
+                            <constraint firstAttribute="trailing" secondItem="Bwe-jX-zdC" secondAttribute="trailing" constant="60" id="zhL-vJ-IGM"/>
+                        </constraints>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
+                    <connections>
+                        <outletCollection property="buttons" destination="7Lf-IS-Gge" collectionClass="NSMutableArray" id="Rgo-88-JKc"/>
+                        <outletCollection property="buttons" destination="szl-m9-D3H" collectionClass="NSMutableArray" id="Eg0-0g-6d9"/>
+                        <outletCollection property="buttons" destination="2mv-Bi-faD" collectionClass="NSMutableArray" id="Ldj-yv-Lpe"/>
+                        <outletCollection property="buttons" destination="7pN-bx-90h" collectionClass="NSMutableArray" id="rHj-Ij-pZb"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vbo-Sf-0ra" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="443" y="207"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="LogoL" width="250" height="79"/>
+        <image name="enuQ" width="22" height="22"/>
+        <image name="history" width="18" height="22"/>
+        <image name="home" width="23" height="20"/>
+        <image name="iconLogin" width="20" height="21"/>
+        <image name="logout" width="19" height="20"/>
+    </resources>
+</document>
