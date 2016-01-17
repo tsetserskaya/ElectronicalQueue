@@ -7,6 +7,7 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -14,14 +15,24 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
+import com.squareup.okhttp.ResponseBody;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.IOException;
 import java.util.ArrayList;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import retrofit2.Callback;
+import retrofit2.Response;
 import ukraine.gdg.electromicalqueue.R;
 import ukraine.gdg.electromicalqueue.activity.LoginActivity;
 import ukraine.gdg.electromicalqueue.activity.MainActivity;
+import ukraine.gdg.electromicalqueue.api.ApiHelper;
 import ukraine.gdg.electromicalqueue.utils.PrefUtils;
 
 /**
@@ -30,7 +41,9 @@ import ukraine.gdg.electromicalqueue.utils.PrefUtils;
  */
 public class HomeFragment extends Fragment {
 
+    private static final String TAG = "HomeFragment";
     private ArrayList<OrderItem> list;
+    private ApiHelper helper = ApiHelper.getInstance();
 
     @Bind(R.id.listView)
     private ListView lv;
@@ -69,13 +82,41 @@ public class HomeFragment extends Fragment {
             }
         });
         ((MainActivity) getActivity()).setSupportActionBar(toolbar);
-        list = new ArrayList<>();
-        list.add(new OrderItem("Hospital", "murzzik", 141854414, "Cherkassy, 156 Hoholya str.", "oeirhgjioergjnrelktrhgnewirlkfewf"));
-        list.add(new OrderItem("Hospital", "murzik", 141854514, "Cherkassy, 156 Hoholya str.", "oeirhgjioergjnrel4tkgnewirlkfewf"));
-        list.add(new OrderItem("Hospital", "murzikz", 141853454, "Cherkassy, 156 Hoholya str.", "oeirhgjioergjnrelk26ggnewirlkfewf"));
-        list.add(new OrderItem("Hospital", "murzzik", 141852414, "Cherkassy, 156 Hoholya str.", "oeirhgjioergjnrelfsfregkgnewirlkfewf"));
-        list.add(new OrderItem("Hospital", "muzrzik", 141851414, "Cherkassy, 156 Hoholya str.", "oeirhgjioergjnrelk235gnewirlkfewf"));
-        OrdersAdapter adapter = new OrdersAdapter(list, R.id.listView, getContext());
+        helper.personalQueues(getContext(), true, new Callback<ResponseBody>() {
+            @Override
+            public void onResponse(Response<ResponseBody> response) {
+                if (response.body() != null){
+                    try {
+                        String json = response.body().string();
+                        JSONObject object = new JSONObject(json);
+                        if (!object.optBoolean("isError")){
+                            list = new ArrayList<>();
+                            JSONObject obj = object.optJSONObject("data");
+                            JSONArray queues = obj.optJSONArray("values");
+                            for (int C = 0; C < queues.length() ; C++){
+                                JSONObject o = queues.getJSONObject(C);
+                                list.add(new OrderItem(o.optString("organisation"), o.optString("doctor"), o.optLong("date"), o.optString("place"), o.optString("description")));
+                            }
+                            ((OrdersAdapter)lv.getAdapter()).setList(list);
+                        }
+                    } catch (IOException | JSONException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(Throwable t) {
+                Log.d(TAG, t.getMessage());
+            }
+        });
+        OrdersAdapter adapter = new OrdersAdapter(null, R.id.listView, getContext());
+//        list = new ArrayList<>();
+//        list.add(new OrderItem("Hospital", "murzzik", 141854414, "Cherkassy, 156 Hoholya str.", "oeirhgjioergjnrelktrhgnewirlkfewf"));
+//        list.add(new OrderItem("Hospital", "murzik", 141854514, "Cherkassy, 156 Hoholya str.", "oeirhgjioergjnrel4tkgnewirlkfewf"));
+//        list.add(new OrderItem("Hospital", "murzikz", 141853454, "Cherkassy, 156 Hoholya str.", "oeirhgjioergjnrelk26ggnewirlkfewf"));
+//        list.add(new OrderItem("Hospital", "murzzik", 141852414, "Cherkassy, 156 Hoholya str.", "oeirhgjioergjnrelfsfregkgnewirlkfewf"));
+//        list.add(new OrderItem("Hospital", "muzrzik", 141851414, "Cherkassy, 156 Hoholya str.", "oeirhgjioergjnrelk235gnewirlkfewf"));
         lv.setAdapter(adapter);
         lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -134,6 +175,5 @@ public class HomeFragment extends Fragment {
                 dialog.dismiss();
             }
         }).setMessage("Are you sure to remove this queue?").show();
-
     }
 }

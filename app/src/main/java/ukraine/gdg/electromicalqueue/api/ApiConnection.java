@@ -27,5 +27,4 @@ public interface ApiConnection {
     @GET("personalQueues")
     Call<ResponseBody> queues(@Query("token") String token, @Query("actual") boolean actual);
 
-
 }

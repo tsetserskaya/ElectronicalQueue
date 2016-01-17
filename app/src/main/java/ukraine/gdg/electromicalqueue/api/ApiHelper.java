@@ -1,5 +1,6 @@
 package ukraine.gdg.electromicalqueue.api;
 
+import android.content.Context;
 import android.util.Log;
 
 import com.squareup.okhttp.ResponseBody;
@@ -15,6 +16,7 @@ import java.util.Map;
 import retrofit2.Callback;
 import retrofit2.Retrofit;
 import ukraine.gdg.electromicalqueue.Constants;
+import ukraine.gdg.electromicalqueue.utils.PrefUtils;
 
 /**
  * Created by Igor
@@ -60,6 +62,10 @@ public class ApiHelper {
         query.put("password", password);
         query.put("email", email);
         connection.register(query).enqueue(callback);
+    }
+
+    public void personalQueues(Context context, boolean actual, Callback<ResponseBody> callback) {
+        connection.queues(PrefUtils.getToken(context), actual).enqueue(callback);
     }
 
 }
