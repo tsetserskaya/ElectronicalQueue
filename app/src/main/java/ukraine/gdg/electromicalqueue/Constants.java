@@ -6,6 +6,8 @@ package ukraine.gdg.electromicalqueue;
  */
 public interface Constants {
 
-    String BASE_API = "";
+    String BASE_API_URL = "http://59.133.14.89/api/";
+    String PREFS_TOKEN = "prefs_token";
+    String PREFERENCES = "prefs";
 
 }
