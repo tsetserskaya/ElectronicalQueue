@@ -18,11 +18,11 @@ import ukraine.gdg.electromicalqueue.R;
  * Created by Igor
  * on 17.01.2016
  */
-public class OrdersAdapter extends ArrayAdapter<OrderItem>{
+public class ResourceAdapter extends ArrayAdapter<ResourceItem> {
 
-    private List<OrderItem> mList;
+    private List<ResourceItem> mList;
 
-    public OrdersAdapter(ArrayList<OrderItem> list, int resourceId, Context context) {
+    public ResourceAdapter(ArrayList<ResourceItem> list, int resourceId, Context context) {
         super(context, resourceId, list);
         mList = list;
     }
@@ -32,36 +32,36 @@ public class OrdersAdapter extends ArrayAdapter<OrderItem>{
         if (mList != null) {
 
             ViewHolder vh = new ViewHolder();
-            final OrderItem item = getItem(position);
+            final ResourceItem item = getItem(position);
             View v = convertView;
             if (v == null) {
-                v = LayoutInflater.from(getContext()).inflate(R.layout.item_order, parent, false);
-                vh.doctor = (TextView) v.findViewById(R.id.doctor);
-                vh.caption = (TextView) v.findViewById(R.id.caption);
+                v = LayoutInflater.from(getContext()).inflate(R.layout.item_resource, parent, false);
+                vh.specialization = (TextView) v.findViewById(R.id.specialization);
+                vh.name = (TextView) v.findViewById(R.id.name);
                 vh.place = (TextView) v.findViewById(R.id.place);
                 vh.time = (TextView) v.findViewById(R.id.time);
-                vh.date = (TextView) v.findViewById(R.id.dateText);
+                vh.organisation = (TextView) v.findViewById(R.id.organisation);
                 v.setTag(vh);
             }
             vh = (ViewHolder) v.getTag();
-            vh.doctor.setText(item.doctor);
-            vh.caption.setText(item.caption);
-            vh.place.setText(item.place);
-            vh.time.setText(getReadableTimeString(item.date));
-            vh.date.setText(getReadableDateString(item.date));
+            vh.specialization.setText(item.specialization);
+            vh.name.setText(item.name);
+            vh.place.setText(item.address);
+            vh.time.setText((getReadableTimeString(item.timeStart) + " - " + getReadableTimeString(item.timeEnd)));
+            vh.organisation.setText(item.organisation);
             return v;
         } else return null;
     }
 
 
 
-    public void setList(List<OrderItem> list) {
+    public void setList(List<ResourceItem> list) {
         mList = list;
         notifyDataSetChanged();
     }
 
     @Override
-    public int getPosition(OrderItem item) {
+    public int getPosition(ResourceItem item) {
         return mList.indexOf(item);
     }
 
@@ -71,12 +71,12 @@ public class OrdersAdapter extends ArrayAdapter<OrderItem>{
     }
 
     @Override
-    public OrderItem getItem(int position) {
+    public ResourceItem getItem(int position) {
         return mList.get(position);
     }
 
     @Override
-    public void remove(OrderItem object) {
+    public void remove(ResourceItem object) {
         mList.remove(object);
         notifyDataSetChanged();
     }
@@ -90,24 +90,17 @@ public class OrdersAdapter extends ArrayAdapter<OrderItem>{
 
 
     static class ViewHolder {
-        TextView doctor;
+        TextView name;
+        TextView organisation;
         TextView time;
-        TextView date;
-        TextView caption;
+        TextView specialization;
         TextView place;
-    }
-
-    public static String getReadableDateString(long dateTime) {
-        Date date = new Date(dateTime * 1000);
-        SimpleDateFormat format = new SimpleDateFormat("MMM, dd");
-        return format.format(date);
     }
 
     public static String getReadableTimeString(long time) {
         Date date = new Date(time * 1000);
-        SimpleDateFormat format = new SimpleDateFormat("hh:mm a");
+        SimpleDateFormat format = new SimpleDateFormat("HH:mm");
         return format.format(date);
     }
-
 
 }

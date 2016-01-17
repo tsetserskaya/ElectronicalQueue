@@ -37,7 +37,7 @@ public class LoginFragment extends Fragment {
     private String TAG = "LoginFragment";
     private ApiHelper helper = ApiHelper.getInstance();
 
-    @Bind(R.id.login)
+    @Bind(R.id.name)
     AutoCompleteTextView loginText;
 
     @Bind(R.id.password)

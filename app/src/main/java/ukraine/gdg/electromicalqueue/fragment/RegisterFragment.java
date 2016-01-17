@@ -18,7 +18,6 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
-import java.util.Objects;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -39,7 +38,7 @@ public class RegisterFragment extends Fragment {
     private String TAG = "RegisterFragment";
     private ApiHelper helper = ApiHelper.getInstance();
 
-    @Bind(R.id.login)
+    @Bind(R.id.name)
     AutoCompleteTextView loginText;
 
     @Bind(R.id.password)

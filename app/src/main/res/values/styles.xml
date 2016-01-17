@@ -16,4 +16,9 @@
         <item name="android:textColorHint">#EEEEEE</item>
     </style>
 
+    <style name="ThemeOverlay" parent="ThemeOverlay.AppCompat.Light">
+        <item name="android:colorBackground">@color/colorPrimaryDark</item>
+        <item name="android:textColor">#FFFFFF</item>
+    </style>
+
 </resources>

@@ -21,4 +21,9 @@ public class PrefUtils {
                 .getString(Constants.PREFS_TOKEN, "");
     }
 
+    public static void deleteToken(Context context) {
+        context.getApplicationContext().getSharedPreferences(Constants.PREFERENCES, Context.MODE_PRIVATE)
+                .edit().remove(Constants.PREFS_TOKEN).commit();
+    }
+
 }

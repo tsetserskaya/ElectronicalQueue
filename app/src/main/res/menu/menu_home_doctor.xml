@@ -14,10 +14,12 @@
         <menu>
             <item
                 android:id="@+id/old"
-                android:title="Old queues" />
+                android:title="History"
+                android:icon="@drawable/ic_menu_history"/>
             <item
                 android:id="@+id/logout"
-                android:title="Log out" />
+                android:title="Log out"
+                android:icon="@drawable/ic_menu_log_out"/>
             <item
                 android:id="@+id/doctor"
                 android:title="Doctor" />
